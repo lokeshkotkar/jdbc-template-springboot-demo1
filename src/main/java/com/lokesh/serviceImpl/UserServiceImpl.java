@@ -27,6 +27,7 @@ public class UserServiceImpl {
 		userDao.executeProc4();
 		try {
 		retryableTest.testRetryable();
+//		if the above method call throws an exception retryableTest.testRetryable() throws an exception then after retrying 3 times it went to the below catch block
 		}catch (Exception e) {
 			System.out.println("inside service catch block");
 		}
