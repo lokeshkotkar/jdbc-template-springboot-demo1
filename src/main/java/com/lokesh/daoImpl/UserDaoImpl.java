@@ -20,6 +20,10 @@ import com.lokesh.Dao.UserDao;
 import com.lokesh.model.User;
 import java.sql.CallableStatement;
 
+/**
+ * @author lokesh
+ *
+ */
 @Repository
 public class UserDaoImpl extends GenericDaoImpl implements UserDao {
 
@@ -29,6 +33,11 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao {
 	@Autowired
 	private StoredProcConfig StoredProcConfig;
 
+	/**
+	 *this function is for query the database stored procedure and 
+	 * get json response as a result of stored procedure using simpleJdbcCall
+	 *
+	 */
 	@Override
 	public Map<String, Object> executeProc1() {
 		SimpleJdbcCall jdbcCall = new SimpleJdbcCall(this.getDataSource()).withSchemaName("test")
@@ -46,6 +55,11 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao {
 		return result;
 	}
 
+	/**
+	 *this function is for query the database stored procedure and 
+	 * get json response as a result of stored procedure using callableStatement
+	 *
+	 */
 	@Override
 	public Map<String, Object> executeProc2() {
 		try {
@@ -64,6 +78,11 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao {
 		return null;
 	}
 
+	/**
+	 *this function is for query the database stored procedure which has one input parameter and 
+	 * get json response as a result of stored procedure using callableStatement
+	 *
+	 */
 	@Override
 	public Map<String, Object> executeProc3() {
 		try {
@@ -82,19 +101,12 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao {
 
 		return null;
 	}
-
-	private void convertJsonToObject(String inputJson) {
-		try {
-			User[] userArray = objectMapper.readValue(inputJson.toString(), User[].class);
-			List<User> userList = Arrays.asList(userArray);
-			System.out.println("userlist is " + userList);
-			convertObjectToJson(userList);
-		} catch (IOException e) {
-			System.out.println("inside catch block");
-			e.printStackTrace();
-		}
-	}
-
+	
+	/**
+	 *this function is for query the database stored procedure which has one input parameter and 
+	 * get json response as a result of stored procedure using SimpleJdbcCall
+	 *
+	 */
 	@Override
 	public Map<String, Object> executeProc4() {
 		SimpleJdbcCall jdbcCall = new SimpleJdbcCall(this.getDataSource()).withSchemaName("test")
@@ -107,6 +119,30 @@ public class UserDaoImpl extends GenericDaoImpl implements UserDao {
 		return result;
 	}
 
+
+	
+	/**
+	 * @param inputJson 
+	 * this function is for converting input json to the user class object
+	 */
+	private void convertJsonToObject(String inputJson) {
+		try {
+			User[] userArray = objectMapper.readValue(inputJson.toString(), User[].class);
+			List<User> userList = Arrays.asList(userArray);
+			System.out.println("userlist is " + userList);
+			convertObjectToJson(userList);
+		} catch (IOException e) {
+			System.out.println("inside catch block");
+			e.printStackTrace();
+		}
+	}
+
+
+
+	/**
+	 * @param userList
+	 * this function converts list of a object to json 
+	 */
 	private void convertObjectToJson(List<User> userList) {
 		try {
 

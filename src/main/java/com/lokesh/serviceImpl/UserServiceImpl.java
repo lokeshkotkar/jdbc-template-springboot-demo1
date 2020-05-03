@@ -5,6 +5,11 @@ import org.springframework.stereotype.Service;
 
 import com.lokesh.Dao.UserDao;
 
+/**
+ * @author lokesh
+ * this class is for call different dao methods
+ *
+ */
 @Service
 public class UserServiceImpl {
 
@@ -13,10 +18,10 @@ public class UserServiceImpl {
 
 	public void fetchStudentJson() {
 		System.out.println("inside service");
-		// userDao.executeProc1();
-//		 userDao.executeProc2();
+		userDao.executeProc1();
+		userDao.executeProc2();
 		userDao.executeProc3();
-//		userDao.executeProc4();
+		userDao.executeProc4();
 	}
 
 }

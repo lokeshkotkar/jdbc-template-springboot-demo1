@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
+/**
+ * @author lokesh
+ * this class is for instantiate datasource
+ */
 @Repository
 public class GenericDaoImpl extends JdbcDaoSupport {
 	

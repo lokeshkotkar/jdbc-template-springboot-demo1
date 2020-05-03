@@ -2,6 +2,12 @@ package com.lokesh.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * @author lokesh
+ * User POJO 
+ * @JsonProperty is used to map the database column name to the POJO name which is used by objectMapper
+ *
+ */
 public class User {
 	
 	@JsonProperty(value = "id")

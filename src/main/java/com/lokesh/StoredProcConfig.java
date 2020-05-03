@@ -3,6 +3,11 @@ package com.lokesh;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author lokesh
+ * this call is for reading database procedure name from application.properties file
+ *
+ */
 @Component
 @ConfigurationProperties(prefix = "stored-proc-name")
 public class StoredProcConfig {
