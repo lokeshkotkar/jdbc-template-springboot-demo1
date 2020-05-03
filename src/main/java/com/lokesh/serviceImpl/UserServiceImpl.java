@@ -15,6 +15,9 @@ public class UserServiceImpl {
 
 	@Autowired
 	private UserDao userDao;
+	
+	@Autowired
+	private RetryableTest retryableTest;
 
 	public void fetchStudentJson() {
 		System.out.println("inside service");
@@ -22,6 +25,11 @@ public class UserServiceImpl {
 		userDao.executeProc2();
 		userDao.executeProc3();
 		userDao.executeProc4();
+		try {
+		retryableTest.testRetryable();
+		}catch (Exception e) {
+			System.out.println("inside service catch block");
+		}
 	}
 
 }
